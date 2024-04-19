@@ -2,12 +2,12 @@
 
 ## Introduction
 
-Ce dépot est un test d'utilisation d'IA pour coder, suite aux cours d'[Alban Crepel](https://github.com/AlbanCrepel). L'objectif est de faire une API avec uniquement le modèle d'IA (je ne code pas à proprement parler). Cet exercice sert seulement à faire des recherches sur :
+This repository is a test of using AI to code, following [Alban Crepel's](https://github.com/AlbanCrepel) classes. The objective is to make an API with only the AI model (I don't code strictly speaking). This exercise only serves to research :
 
-- Les modèles d'IA existant
-- Les requettes http (les fichiers .http)
+- Existing AI models
+- http requests (.http files)
 
-## Installations
+## Facilities
 
 ```bash
 npm i express
