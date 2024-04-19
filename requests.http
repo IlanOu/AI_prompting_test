@@ -1,0 +1,57 @@
+### Configuration de la variable baseURL
+@baseURL = http://localhost:3000
+
+### Authentification correcte
+GET {{baseURL}}/api/data?name=John&age=30
+Authorization: Basic YWRtaW46cGFzc3dvcmQ=
+
+### Vérifier la réponse de la route GET
+@responseData = {{$response.body}}
+@expectedResponse = { "name": "John", "age": "30" }
+
+> {
+    const actual = @responseData;
+    const expected = @expectedResponse;
+    if (JSON.stringify(actual) !== JSON.stringify(expected)) {
+        console.error("Réponse incorrecte :", actual);
+    } else {
+        console.log("Réponse correcte :", actual);
+    }
+}
+
+### Authentification incorrecte pour la route GET
+GET {{baseURL}}/api/data?name=John&age=30
+
+### Vérifier l'erreur 401 pour l'authentification incorrecte
+@responseError = {{$response.body.error}}
+
+> {
+    if (@responseError === "Unauthorized") {
+        console.log("Erreur 401 correcte");
+    } else {
+        console.error("Erreur incorrecte :", @responseError);
+    }
+}
+
+### Authentification correcte pour la route POST
+POST {{baseURL}}/api/data
+Authorization: Basic YWRtaW46cGFzc3dvcmQ=
+Content-Type: application/json
+
+{
+  "message": "Hello, world!"
+}
+
+### Vérifier la réponse de la route POST
+@responseData = {{$response.body}}
+@expectedResponse = { "message": "Hello, world!" }
+
+> {
+    const actual = @responseData;
+    const expected = @expectedResponse;
+    if (JSON.stringify(actual) !== JSON.stringify(expected)) {
+        console.error("Réponse incorrecte :", actual);
+    } else {
+        console.log("Réponse correcte :", actual);
+    }
+}
